@@ -73,10 +73,16 @@ where
     println!("part 2: {}", result);
 }
 
+#[derive(Debug, Clone)]
+pub struct AdventOfCodeDayInput {
+    pub day: u32,
+    pub lines: Vec<String>,
+}
+
 pub trait AdventOfCodeDay {
-    fn input(&self) -> Vec<String>;
-    fn part1(&mut self, input: Vec<String>) -> String;
-    fn part2(&mut self, input: Vec<String>) -> String;
+    fn input(&self) -> AdventOfCodeDayInput;
+    fn part1(&mut self, input: &AdventOfCodeDayInput) -> String;
+    fn part2(&mut self, input: &AdventOfCodeDayInput) -> String;
 }
 
 #[cfg(test)]

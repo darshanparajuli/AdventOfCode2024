@@ -1,17 +1,20 @@
-use aoc_2024::{read_input, AdventOfCodeDay};
+use aoc_2024::{read_input, AdventOfCodeDay, AdventOfCodeDayInput};
 use std::collections::HashMap;
 
 pub(crate) struct Day1;
 
 impl AdventOfCodeDay for Day1 {
-    fn input(&self) -> Vec<String> {
-        read_input("day1.txt")
+    fn input(&self) -> AdventOfCodeDayInput {
+        AdventOfCodeDayInput {
+            day: 1,
+            lines: read_input("day1.txt"),
+        }
     }
 
-    fn part1(&mut self, input: Vec<String>) -> String {
+    fn part1(&mut self, input: &AdventOfCodeDayInput) -> String {
         let mut left_numbers = vec![];
         let mut right_numbers = vec![];
-        for line in input {
+        for line in &input.lines {
             let mut split_itr = line.split_ascii_whitespace();
             left_numbers.push(split_itr.next().unwrap().parse::<i64>().unwrap());
             right_numbers.push(split_itr.next().unwrap().parse::<i64>().unwrap());
@@ -29,10 +32,10 @@ impl AdventOfCodeDay for Day1 {
             .to_string()
     }
 
-    fn part2(&mut self, input: Vec<String>) -> String {
+    fn part2(&mut self, input: &AdventOfCodeDayInput) -> String {
         let mut left_numbers = vec![];
         let mut right_numbers = HashMap::new();
-        for line in input {
+        for line in &input.lines {
             let mut split_itr = line.split_ascii_whitespace();
             left_numbers.push(split_itr.next().unwrap().parse::<i64>().unwrap());
 
