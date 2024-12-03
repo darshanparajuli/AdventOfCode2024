@@ -1,4 +1,5 @@
 use crate::days::day1::Day1;
+use crate::days::day2::Day2;
 use aoc_2024::AdventOfCodeDay;
 use std::io::{stdout, Write};
 
@@ -8,6 +9,7 @@ fn main() {
     #[rustfmt::skip]
     let mut days: Vec<Box<dyn AdventOfCodeDay>> = vec![
         Box::new(Day1),
+        Box::new(Day2),
     ];
 
     days.iter_mut().for_each(|day| {
