@@ -1,6 +1,7 @@
 use crate::days::day1::Day1;
 use crate::days::day2::Day2;
 use crate::days::day3::Day3;
+use crate::days::day4::Day4;
 use aoc_2024::AdventOfCodeDay;
 use std::io::{stdout, Write};
 
@@ -12,6 +13,7 @@ fn main() {
         Box::new(Day1),
         Box::new(Day2),
         Box::new(Day3),
+        Box::new(Day4),
     ];
 
     days.iter_mut().for_each(|day| {
