@@ -1,16 +1,16 @@
-use aoc_2024::{read_input, AdventOfCodeDay, AdventOfCodeDayInput};
+use aoc_2024::{read_input, AocContext, AocDay, AocInput};
 
 pub(crate) struct Day2;
 
-impl AdventOfCodeDay for Day2 {
-    fn input(&self) -> AdventOfCodeDayInput {
-        AdventOfCodeDayInput {
+impl AocDay for Day2 {
+    fn input(&self, context: &AocContext) -> AocInput {
+        AocInput {
             day: 2,
-            lines: read_input("day2.txt"),
+            lines: read_input(&context.input_dir, "day2.txt"),
         }
     }
 
-    fn part1(&mut self, input: &AdventOfCodeDayInput) -> String {
+    fn part1(&mut self, input: &AocInput) -> String {
         let reports = parse_input(&input.lines);
         reports
             .iter()
@@ -19,7 +19,7 @@ impl AdventOfCodeDay for Day2 {
             .to_string()
     }
 
-    fn part2(&mut self, input: &AdventOfCodeDayInput) -> String {
+    fn part2(&mut self, input: &AocInput) -> String {
         let mut reports = parse_input(&input.lines);
         let mut count = 0;
         for report in &mut reports {

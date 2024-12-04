@@ -1,16 +1,16 @@
-use aoc_2024::{read_input, AdventOfCodeDay, AdventOfCodeDayInput};
+use aoc_2024::{read_input, AocContext, AocDay, AocInput};
 
 pub(crate) struct Day3;
 
-impl AdventOfCodeDay for Day3 {
-    fn input(&self) -> AdventOfCodeDayInput {
-        AdventOfCodeDayInput {
+impl AocDay for Day3 {
+    fn input(&self, context: &AocContext) -> AocInput {
+        AocInput {
             day: 3,
-            lines: read_input("day3.txt"),
+            lines: read_input(&context.input_dir, "day3.txt"),
         }
     }
 
-    fn part1(&mut self, input: &AdventOfCodeDayInput) -> String {
+    fn part1(&mut self, input: &AocInput) -> String {
         input
             .lines
             .iter()
@@ -24,7 +24,7 @@ impl AdventOfCodeDay for Day3 {
             .to_string()
     }
 
-    fn part2(&mut self, input: &AdventOfCodeDayInput) -> String {
+    fn part2(&mut self, input: &AocInput) -> String {
         let mut sum = 0;
         let mut can_multiply = true;
         input

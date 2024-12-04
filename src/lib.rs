@@ -1,25 +1,22 @@
-use std::env;
-use std::fmt::Display;
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::BufReader;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 pub mod raw_ptr;
 
-pub fn read_input(name: &str) -> Vec<String> {
-    read_input_map(name, |e| e.to_owned())
+pub fn read_input(input_dir: &Path, name: &str) -> Vec<String> {
+    read_input_map(input_dir, name, |e| e.to_owned())
 }
 
-pub fn read_input_map<T>(name: &str, mapper: fn(&str) -> T) -> Vec<T> {
-    let input_dir = env::args().nth(1).unwrap();
-    match File::open(PathBuf::from(&input_dir).join(name)) {
+pub fn read_input_map<T>(input_dir: &Path, name: &str, mapper: fn(&str) -> T) -> Vec<T> {
+    match File::open(input_dir.join(name)) {
         Ok(f) => BufReader::new(f)
             .lines()
             .map(|line| mapper(&line.unwrap()))
             .collect(),
         Err(e) => {
-            eprintln!("Error reading input file '{}': {}", input_dir, e);
+            eprintln!("Error reading input file '{}': {}", input_dir.display(), e);
             std::process::exit(1);
         }
     }
@@ -59,30 +56,21 @@ pub fn crt(nums: &[u64], mods: &[u64]) -> u64 {
     bi_ni_xi_sum % n
 }
 
-pub fn print_part1_answer<T>(result: T)
-where
-    T: Display,
-{
-    println!("part 1: {}", result);
-}
-
-pub fn print_part2_answer<T>(result: T)
-where
-    T: Display,
-{
-    println!("part 2: {}", result);
-}
-
 #[derive(Debug, Clone)]
-pub struct AdventOfCodeDayInput {
+pub struct AocInput {
     pub day: u32,
     pub lines: Vec<String>,
 }
 
-pub trait AdventOfCodeDay {
-    fn input(&self) -> AdventOfCodeDayInput;
-    fn part1(&mut self, input: &AdventOfCodeDayInput) -> String;
-    fn part2(&mut self, input: &AdventOfCodeDayInput) -> String;
+#[derive(Debug, Clone)]
+pub struct AocContext {
+    pub input_dir: PathBuf,
+}
+
+pub trait AocDay {
+    fn input(&self, context: &AocContext) -> AocInput;
+    fn part1(&mut self, input: &AocInput) -> String;
+    fn part2(&mut self, input: &AocInput) -> String;
 }
 
 #[cfg(test)]

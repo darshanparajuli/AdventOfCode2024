@@ -1,17 +1,17 @@
-use aoc_2024::{read_input, AdventOfCodeDay, AdventOfCodeDayInput};
+use aoc_2024::{read_input, AocContext, AocDay, AocInput};
 use std::collections::HashSet;
 
 pub(crate) struct Day4;
 
-impl AdventOfCodeDay for Day4 {
-    fn input(&self) -> AdventOfCodeDayInput {
-        AdventOfCodeDayInput {
+impl AocDay for Day4 {
+    fn input(&self, context: &AocContext) -> AocInput {
+        AocInput {
             day: 4,
-            lines: read_input("day4.txt"),
+            lines: read_input(&context.input_dir, "day4.txt"),
         }
     }
 
-    fn part1(&mut self, input: &AdventOfCodeDayInput) -> String {
+    fn part1(&mut self, input: &AocInput) -> String {
         let mut values = HashSet::new();
         for y in 0..input.lines.len() {
             for x in 0..input.lines[y].len() {
@@ -23,7 +23,7 @@ impl AdventOfCodeDay for Day4 {
         values.len().to_string()
     }
 
-    fn part2(&mut self, input: &AdventOfCodeDayInput) -> String {
+    fn part2(&mut self, input: &AocInput) -> String {
         let mut values = HashSet::new();
         for y in 0..input.lines.len() {
             for x in 0..input.lines[y].len() {
