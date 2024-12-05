@@ -6,6 +6,7 @@ use aoc_2024::{AocContext, AocDay};
 use std::io::{stdout, Write};
 use std::path::PathBuf;
 use structopt::StructOpt;
+use crate::days::day5::Day5;
 
 mod days;
 
@@ -26,6 +27,7 @@ fn main() {
         Box::new(Day2),
         Box::new(Day3),
         Box::new(Day4),
+        Box::new(Day5),
     ];
     let context = AocContext {
         input_dir: PathBuf::from(opt.input_dir),
