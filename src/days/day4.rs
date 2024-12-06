@@ -1,17 +1,14 @@
-use aoc_2024::{read_input, AocContext, AocDay, AocInput};
+use aoc_2024::{AocInput, AocSolver};
 use std::collections::HashSet;
 
 pub(crate) struct Day4;
 
-impl AocDay for Day4 {
-    fn input(&self, context: &AocContext) -> AocInput {
-        AocInput {
-            day: 4,
-            lines: read_input(&context.input_dir, "day4.txt"),
-        }
+impl AocSolver for Day4 {
+    fn day(&self) -> u32 {
+        4
     }
 
-    fn part1(&mut self, input: &AocInput) -> String {
+    fn solve_part1(&mut self, input: &AocInput) -> String {
         let mut values = HashSet::new();
         for y in 0..input.lines.len() {
             for x in 0..input.lines[y].len() {
@@ -23,7 +20,7 @@ impl AocDay for Day4 {
         values.len().to_string()
     }
 
-    fn part2(&mut self, input: &AocInput) -> String {
+    fn solve_part2(&mut self, input: &AocInput) -> String {
         let mut values = HashSet::new();
         for y in 0..input.lines.len() {
             for x in 0..input.lines[y].len() {

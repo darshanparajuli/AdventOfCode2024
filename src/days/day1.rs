@@ -1,17 +1,14 @@
-use aoc_2024::{read_input, AocContext, AocDay, AocInput};
+use aoc_2024::{AocInput, AocSolver};
 use std::collections::HashMap;
 
 pub(crate) struct Day1;
 
-impl AocDay for Day1 {
-    fn input(&self, context: &AocContext) -> AocInput {
-        AocInput {
-            day: 1,
-            lines: read_input(&context.input_dir, "day1.txt"),
-        }
+impl AocSolver for Day1 {
+    fn day(&self) -> u32 {
+        1
     }
 
-    fn part1(&mut self, input: &AocInput) -> String {
+    fn solve_part1(&mut self, input: &AocInput) -> String {
         let mut left_numbers = vec![];
         let mut right_numbers = vec![];
         for line in &input.lines {
@@ -32,7 +29,7 @@ impl AocDay for Day1 {
             .to_string()
     }
 
-    fn part2(&mut self, input: &AocInput) -> String {
+    fn solve_part2(&mut self, input: &AocInput) -> String {
         let mut left_numbers = vec![];
         let mut right_numbers = HashMap::new();
         for line in &input.lines {

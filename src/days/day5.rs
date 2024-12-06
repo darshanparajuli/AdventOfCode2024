@@ -1,16 +1,13 @@
-use aoc_2024::{read_input, AocContext, AocDay, AocInput};
+use aoc_2024::{AocInput, AocSolver};
 
 pub(crate) struct Day5;
 
-impl AocDay for Day5 {
-    fn input(&self, context: &AocContext) -> AocInput {
-        AocInput {
-            day: 5,
-            lines: read_input(&context.input_dir, "day5.txt"),
-        }
+impl AocSolver for Day5 {
+    fn day(&self) -> u32 {
+        5
     }
 
-    fn part1(&mut self, input: &AocInput) -> String {
+    fn solve_part1(&mut self, input: &AocInput) -> String {
         let input = parse_input(&input.lines);
         let mut sum = 0;
         for page_nums in &input.page_numbers_list {
@@ -34,7 +31,7 @@ impl AocDay for Day5 {
         sum.to_string()
     }
 
-    fn part2(&mut self, input: &AocInput) -> String {
+    fn solve_part2(&mut self, input: &AocInput) -> String {
         let mut input = parse_input(&input.lines);
         let mut sum = 0;
         for page_nums in &mut input.page_numbers_list {

@@ -1,16 +1,13 @@
-use aoc_2024::{read_input, AocContext, AocDay, AocInput};
+use aoc_2024::{AocInput, AocSolver};
 
 pub(crate) struct Day2;
 
-impl AocDay for Day2 {
-    fn input(&self, context: &AocContext) -> AocInput {
-        AocInput {
-            day: 2,
-            lines: read_input(&context.input_dir, "day2.txt"),
-        }
+impl AocSolver for Day2 {
+    fn day(&self) -> u32 {
+        2
     }
 
-    fn part1(&mut self, input: &AocInput) -> String {
+    fn solve_part1(&mut self, input: &AocInput) -> String {
         let reports = parse_input(&input.lines);
         reports
             .iter()
@@ -19,7 +16,7 @@ impl AocDay for Day2 {
             .to_string()
     }
 
-    fn part2(&mut self, input: &AocInput) -> String {
+    fn solve_part2(&mut self, input: &AocInput) -> String {
         let mut reports = parse_input(&input.lines);
         let mut count = 0;
         for report in &mut reports {
