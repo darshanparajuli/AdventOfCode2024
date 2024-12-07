@@ -3,6 +3,7 @@ use crate::days::day2::Day2;
 use crate::days::day3::Day3;
 use crate::days::day4::Day4;
 use crate::days::day5::Day5;
+use crate::days::day6::Day6;
 use aoc_2024::{read_input, AocInput, AocSolver};
 use std::io::{stdout, Write};
 use std::path::{Path, PathBuf};
@@ -28,6 +29,7 @@ fn main() {
         Box::new(Day3),
         Box::new(Day4),
         Box::new(Day5),
+        Box::new(Day6),
     ];
     let input_dir = PathBuf::from(opt.input_dir);
     if let Some(day) = opt.day {
