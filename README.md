@@ -1,5 +1,5 @@
 # Advent of Code 2024
 
 ```
-cargo run -- input
+cargo run -- --input-dir input [-d <day>]
 ```
