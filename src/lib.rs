@@ -51,6 +51,31 @@ pub fn crt(nums: &[u64], mods: &[u64]) -> u64 {
     bi_ni_xi_sum % n
 }
 
+pub fn gcd(a: u64, b: u64) -> u64 {
+    assert!(a != 0 || b != 0);
+    if b == 0 {
+        return a;
+    }
+    gcd(b, a % b)
+}
+
+pub fn lcm(a: u64, b: u64) -> u64 {
+    assert!(a != 0 && b != 0);
+    (a * b) / gcd(a, b)
+}
+
+#[derive(Copy, Clone, Debug, Hash, PartialEq, Eq)]
+pub struct Vec2<T> {
+    pub x: T,
+    pub y: T,
+}
+
+impl<T> Vec2<T> {
+    pub fn new(x: T, y: T) -> Self {
+        Self { x, y }
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct AocInput {
     pub lines: Vec<String>,
@@ -71,5 +96,15 @@ mod tests {
         let nums = [67, 6, 57, 58];
         let mods = [67, 7, 59, 61];
         assert_eq!(crt(&nums, &mods), 754018);
+    }
+
+    #[test]
+    fn gcd_test() {
+        assert!(gcd(8, 12) == 4);
+    }
+
+    #[test]
+    fn lcm_test() {
+        assert!(lcm(4, 6) == 12);
     }
 }
