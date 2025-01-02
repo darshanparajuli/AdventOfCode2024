@@ -5,6 +5,7 @@ use crate::days::day12::Day12;
 use crate::days::day13::Day13;
 use crate::days::day14::Day14;
 use crate::days::day15::Day15;
+use crate::days::day16::Day16;
 use crate::days::day2::Day2;
 use crate::days::day3::Day3;
 use crate::days::day4::Day4;
@@ -48,6 +49,7 @@ fn main() {
         Box::new(Day13),
         Box::new(Day14),
         Box::new(Day15),
+        Box::new(Day16),
     ];
     let input_dir = PathBuf::from(opt.input_dir);
     if let Some(day) = opt.day {

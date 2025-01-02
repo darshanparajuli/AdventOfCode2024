@@ -1,3 +1,4 @@
+use std::fmt::{Display, Formatter};
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::BufReader;
@@ -64,7 +65,7 @@ pub fn lcm(a: u64, b: u64) -> u64 {
     (a * b) / gcd(a, b)
 }
 
-#[derive(Copy, Clone, Debug, Hash, PartialEq, Eq)]
+#[derive(Copy, Clone, Debug, Hash, PartialEq, Eq, Ord, PartialOrd)]
 pub struct Vec2<T> {
     pub x: T,
     pub y: T,
@@ -73,6 +74,12 @@ pub struct Vec2<T> {
 impl<T> Vec2<T> {
     pub fn new(x: T, y: T) -> Self {
         Self { x, y }
+    }
+}
+
+impl<T: Display> Display for Vec2<T> {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Vec2({}, {})", self.x, self.y)
     }
 }
 
